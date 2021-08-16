@@ -1,6 +1,6 @@
 import axios from 'axios'
 import type { AxiosInstance } from 'axios'
-import type { BORequestConfig, BORequestInterceptors } from './type'
+import type { BORequestConfig, BORequestInterceptors } from './types'
 
 import { ElLoading } from 'element-plus'
 import { ILoadingInstance } from 'element-plus/lib/el-loading/src/loading.type'
@@ -34,7 +34,7 @@ class BORequest {
     // 2.添加所有的实例都有的拦截器
     this.instance.interceptors.request.use(
       (config) => {
-        console.log('所有的实例都有的拦截器: 请求成功拦截')
+        // console.log('所有的实例都有的拦截器: 请求成功拦截')
 
         // 添加loading
         if (this.showLoading) {
@@ -48,19 +48,20 @@ class BORequest {
         return config
       },
       (err) => {
-        console.log('所有的实例都有的拦截器: 请求失败拦截')
+        // console.log('所有的实例都有的拦截器: 请求失败拦截')
         return err
       }
     )
 
     this.instance.interceptors.response.use(
       (res) => {
-        console.log('所有的实例都有的拦截器: 响应成功拦截')
+        // console.log('所有的实例都有的拦截器: 响应成功拦截')
 
         // 将loading移除
-        setTimeout(() => {
-          this.loading?.close()
-        }, 1000)
+        this.loading?.close()
+        // setTimeout(() => {
+        //   this.loading?.close()
+        // }, 1000)
 
         const data = res.data
         if (data.returnCode === '-1001') {
@@ -70,12 +71,13 @@ class BORequest {
         }
       },
       (err) => {
-        console.log('所有的实例都有的拦截器: 响应失败拦截')
+        // console.log('所有的实例都有的拦截器: 响应失败拦截')
 
         // 将loading移除
-        setTimeout(() => {
-          this.loading?.close()
-        }, 1000)
+        this.loading?.close()
+        // setTimeout(() => {
+        //   this.loading?.close()
+        // }, 1000)
 
         // 例子: 判断不同的HttpErrorCode显示不同的错误信息
         if (err.response.status === 404) {

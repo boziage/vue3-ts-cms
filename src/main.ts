@@ -4,12 +4,13 @@ import 'normalize.css'
 import './assets/css/index.less'
 
 // import './service/axios_demo'
-import boRequest from './service'
+// import boRequest from './service'
 
 import App from './App.vue'
 
 import router from './router'
 import store from './store'
+import { setupStore } from './store'
 
 const app = createApp(App)
 
@@ -18,6 +19,8 @@ const app = createApp(App)
 app.use(globalRegister)
 app.use(store)
 app.use(router)
+setupStore()
+
 app.mount('#app')
 
 interface DataType {
@@ -26,24 +29,24 @@ interface DataType {
   success: boolean
 }
 
-boRequest
-  .request<DataType>({
-    url: '/home/multidata',
-    method: 'GET',
-    showLoading: false
-    // interceptors: {
-    //   requestInterceptor: (config) => {
-    //     console.log('单独请求的config')
-    //     return config
-    //   },
-    //   responseInterceptor: (res) => {
-    //     console.log('单独响应的response')
-    //     return res
-    //   }
-    // }
-  })
-  .then((res) => {
-    console.log(res.data)
-    console.log(res.returnCode)
-    console.log(res.success)
-  })
+// boRequest
+//   .request<DataType>({
+//     url: '/home/multidata',
+//     method: 'GET',
+//     showLoading: false
+//     // interceptors: {
+//     //   requestInterceptor: (config) => {
+//     //     console.log('单独请求的config')
+//     //     return config
+//     //   },
+//     //   responseInterceptor: (res) => {
+//     //     console.log('单独响应的response')
+//     //     return res
+//     //   }
+//     // }
+//   })
+//   .then((res) => {
+//     console.log(res.data)
+//     console.log(res.returnCode)
+//     console.log(res.success)
+//   })

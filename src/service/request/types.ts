@@ -11,3 +11,8 @@ export interface BORequestConfig<T = AxiosResponse> extends AxiosRequestConfig {
   interceptors?: BORequestInterceptors<T>
   showLoading?: boolean
 }
+
+export interface IDataType<T = any> {
+  code: number
+  data: T
+}
