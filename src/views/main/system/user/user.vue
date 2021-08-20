@@ -1,16 +1,25 @@
 <template>
   <div class="user">
-    <h2>user</h2>
+    <div class="search">
+      <bo-form v-bind="searchFormconfig" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import BoForm from '@/base-ui/form'
+import { searchFormconfig } from './config/search.config'
 
 export default defineComponent({
   name: 'user',
+  components: {
+    BoForm
+  },
   setup() {
-    return {}
+    return {
+      searchFormconfig
+    }
   }
 })
 </script>
