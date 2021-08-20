@@ -18,16 +18,18 @@ const app = createApp(App)
 // globalRegister(app)
 app.use(globalRegister)
 app.use(store)
-app.use(router)
 setupStore()
+
+// path: /user => user
+app.use(router)
 
 app.mount('#app')
 
-interface DataType {
-  data: any
-  returnCode: string
-  success: boolean
-}
+// interface DataType {
+//   data: any
+//   returnCode: string
+//   success: boolean
+// }
 
 // boRequest
 //   .request<DataType>({
