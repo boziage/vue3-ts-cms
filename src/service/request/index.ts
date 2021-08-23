@@ -124,19 +124,19 @@ class BORequest {
     })
   }
 
-  get<T>(config: BORequestConfig<T>): Promise<T> {
+  get<T = any>(config: BORequestConfig<T>): Promise<T> {
     return this.request({ ...config, method: 'GET' })
   }
 
-  post<T>(config: BORequestConfig<T>): Promise<T> {
+  post<T = any>(config: BORequestConfig<T>): Promise<T> {
     return this.request({ ...config, method: 'POST' })
   }
 
-  delete<T>(config: BORequestConfig<T>): Promise<T> {
+  delete<T = any>(config: BORequestConfig<T>): Promise<T> {
     return this.request({ ...config, method: 'DELETE' })
   }
 
-  patch<T>(config: BORequestConfig<T>): Promise<T> {
+  patch<T = any>(config: BORequestConfig<T>): Promise<T> {
     return this.request({ ...config, method: 'PATCH' })
   }
 }

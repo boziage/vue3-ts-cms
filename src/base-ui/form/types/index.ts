@@ -9,6 +9,7 @@ type IColLayout = {
 }
 
 export interface IFormItem {
+  field: string
   type: IFormType
   colLayout?: IColLayout
   label?: string

@@ -5,7 +5,7 @@
       <span v-if="!collapse" class="title">boziage_cms</span>
     </div>
     <el-menu
-      default-active="2"
+      :default-active="defaultValue"
       class="el-menu-vertical"
       :collapse="collapse"
       background-color="#0c2135"
@@ -46,9 +46,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, ref } from 'vue'
 import { useStore } from '@/store'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+
+import { mapPathToMenus } from '@/utils/menusMap'
 
 // vuex - typescript支持不好 => pinia
 
@@ -62,8 +64,23 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const userMenus = computed(() => store.state.login.userMenus)
-    const router = useRouter()
 
+    // router
+    const route = useRoute()
+    const router = useRouter()
+    const currentPath = route.path
+
+    // data
+    const menu = mapPathToMenus(userMenus.value, currentPath)
+    const defaultValue = ref(menu.id + '')
+    // const defaultValue = ref('')
+    // if (menu) {
+    //   defaultValue.value += menu.id
+    // } else {
+    //   defaultValue.value = '999'
+    // }
+
+    // event handle
     const handleMenuItemClick = (item: any) => {
       router.push({
         path: item.url ?? '/not-found'
@@ -71,7 +88,8 @@ export default defineComponent({
     }
     return {
       userMenus,
-      handleMenuItemClick
+      handleMenuItemClick,
+      defaultValue
     }
   }
 })

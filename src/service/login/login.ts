@@ -1,7 +1,7 @@
 import boRequest from '../index'
 
 import type { IAccount, ILoginResult } from './types'
-import type { IDataType } from '../request/types'
+import type { IDataType } from '@/service/request/types'
 
 enum LoginAPI {
   AccountLogin = '/login',
