@@ -6,7 +6,7 @@
     <el-form :label-width="labelWidth">
       <el-row>
         <template v-for="item in formItems" :key="item.label">
-          <el-col v-bind="item.colLayout || colLayout">
+          <el-col v-bind="colLayout">
             <el-form-item
               :label="item.label"
               :rules="item.rules"
@@ -112,9 +112,5 @@ export default defineComponent({
 <style scoped lang="less">
 .bo-form {
   padding-top: 22px;
-
-  .form-item {
-    padding: 5px 30px;
-  }
 }
 </style>
