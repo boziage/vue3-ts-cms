@@ -13,6 +13,7 @@ export interface ILoginState {
   token: string
   userInfo: any
   userMenus: any
+  permissions: string[]
 }
 
 export interface ISystemState {
@@ -20,4 +21,8 @@ export interface ISystemState {
   usersCount: number
   roleList: any[]
   roleCount: number
+  goodsList: any[]
+  goodsCount: number
+  menuList: any[]
+  menuCount: number
 }

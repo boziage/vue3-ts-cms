@@ -12,7 +12,12 @@
             @click="handleResetClick"
             >重置</el-button
           >
-          <el-button type="primary" icon="el-icon-search">搜索</el-button>
+          <el-button
+            type="primary"
+            icon="el-icon-search"
+            @click="handleQueryClick"
+            >搜索</el-button
+          >
         </div>
       </template>
     </bo-form>
@@ -33,7 +38,8 @@ export default defineComponent({
   components: {
     BoForm
   },
-  setup(props) {
+  emits: ['resetBtnClick', 'queryBtnClick'],
+  setup(props, { emit }) {
     // 双向绑定的属性应该是由配置文件的field来决定
     // 1.优化一:formData中属性动态决定
     const formItems = props.searchFormConfig?.formItems ?? []
@@ -47,16 +53,20 @@ export default defineComponent({
     const handleResetClick = () => {
       // formData.value = formOriginData
       for (const key in formOriginData) {
-        console.log(key)
-
         formData.value[key] = formOriginData[key]
       }
-      console.log(formData)
+      emit('resetBtnClick')
+    }
+
+    // 3.优化二:当用户点击搜索
+    const handleQueryClick = () => {
+      emit('queryBtnClick', formData.value)
     }
 
     return {
       formData,
-      handleResetClick
+      handleResetClick,
+      handleQueryClick
     }
   }
 })
