@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import { firstMenu } from '@/utils/menusMap'
+import { firstMenu } from '@/utils/map-menus'
 
 import localCache from '@/utils/cache'
 

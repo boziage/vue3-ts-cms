@@ -19,7 +19,7 @@ import BoBreadcrumb from '@/base-ui/breadcrumb'
 
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
-import { mapPathToBreakcrumbs } from '@/utils/menusMap'
+import { mapPathToBreakcrumbs } from '@/utils/map-menus'
 
 export default defineComponent({
   components: {

@@ -50,7 +50,7 @@ import { defineComponent, computed, ref } from 'vue'
 import { useStore } from '@/store'
 import { useRouter, useRoute } from 'vue-router'
 
-import { mapPathToMenus } from '@/utils/menusMap'
+import { mapPathToMenus } from '@/utils/map-menus'
 
 // vuex - typescript支持不好 => pinia
 
