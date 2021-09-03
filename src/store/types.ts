@@ -9,6 +9,7 @@ export interface IRootState {
 export interface IRootWithModule {
   login: ILoginState
   system: ISystemState
+  dashboard: IDashboardState
 }
 export type IStoreType = IRootState & IRootWithModule
 
@@ -28,4 +29,11 @@ export interface ISystemState {
   goodsCount: number
   menuList: any[]
   menuCount: number
+}
+
+export interface IDashboardState {
+  categoryGoodsCount: any[]
+  categoryGoodsSale: any[]
+  categoryGoodsFavor: any[]
+  addressGoodsSale: any[]
 }

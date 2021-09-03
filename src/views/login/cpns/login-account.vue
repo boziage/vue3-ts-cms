@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import { useStore } from 'vuex'
+import { useStore } from '@/store'
 
 import localCache from '@/utils/cache'
 
